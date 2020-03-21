@@ -1,0 +1,26 @@
+Package: treegrowth
+Version: 0.0.9001
+Encoding: UTF-8
+Title: Functions for Experimental Settings in Kenya
+Authors@R: c(
+    person("Miguel", "Alvarez", email="kamapu78@gmail.com",
+        role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834")),
+    person("Samuel", "Kiboi", role="ctb")
+    )
+Depends:
+    R(>= 3.5.0)
+Imports:
+    ODB,
+    xlsx
+Suggests:
+    devtools,
+    roxygen2
+LazyData: true
+Description:
+    Ad-hoc functions for experimental settings established in Kenya.
+License: GPL (>= 2)
+Roxygen: list(markdown = TRUE)
+URL:
+    https://github.com/kamapu/treegrowth
+BugReports: https://github.com/kamapu/treegrowth/issues
+RoxygenNote: 7.0.2

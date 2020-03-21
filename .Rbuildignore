@@ -1,0 +1,10 @@
+^\.dbeaver$
+^\.git$
+^\.settings$
+^\.gitignore$
+^\.project$
+^\.travis.yml$
+^codecov\.yml$
+^README-figures$
+^README\.Rmd$
+^README\.md$

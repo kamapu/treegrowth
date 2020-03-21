@@ -1,0 +1,26 @@
+#' @name read_growth
+#' 
+#' @title Read growth data and produce an ODB file
+#' 
+#' @description 
+#' Read row data and export to a single data frame using an ODB file as
+#' intermediating file.
+#' 
+#' This function applies the sequence [xlsx2list()] -> [list2odb()] ->
+#' [odb2df()].
+#' 
+#' @param xlsx Character value with the path and/or name of the XLSX input file.
+#' @param odb Character value indicating the path and/or name of output ODB
+#'     file.
+#' @param ... Further arguments (not yet in use).
+#' 
+#' @return A data frame as in [odb2df()].
+#' 
+#' @export read_growth
+#' 
+read_growth <- function(xlsx, odb=".temp.odb", ...) {
+	DB <- xlsx2list(xlsx)
+	list2odb(DB, odb)
+	DB <- odb2df(odb)
+	return(DB)
+}
