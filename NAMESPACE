@@ -2,6 +2,7 @@
 
 export(list2odb)
 export(odb2df)
+export(rate_calc)
 export(read_growth)
 export(xlsx2list)
 importFrom(ODB,"odb.comments<-")
