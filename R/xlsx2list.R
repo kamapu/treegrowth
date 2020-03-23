@@ -10,6 +10,8 @@
 #' 
 #' @param file Character value indicating the path and/or the name of the file
 #'     containing the data to be imported.
+#' @param format_date Character value indicating the format used for date in the
+#'     input table (passed to argument `format` in [as.Date()]).
 #' @param ... Further arguments (not yet used).
 #' 
 #' @return
@@ -18,8 +20,10 @@
 #' 
 #' @export xlsx2list
 #' 
-xlsx2list <- function(file, ...) {
+xlsx2list <- function(file, format_date="%d.%m.%Y", ...) {
 	Plots <- read.xlsx(file, sheetName="plots", stringsAsFactors=FALSE)
+	if(is.character(Plots$planting_date))
+		Plots$planting_date <- as.Date(Plots$planting_date, format_date)
 	Species <- read.xlsx(file, sheetName="species", stringsAsFactors=FALSE)
 	Records <- list()
 	Dates <- list()
@@ -29,6 +33,8 @@ xlsx2list <- function(file, ...) {
 		Records[[i]]$plot_no <- with(Plots, plot_no[plot_name == i])
 		Records[[i]]$taxon_code <- with(Species,
 				taxon_code[match(Records[[i]]$taxon_name, taxon_name)])
+		if(is.character(Records[[i]]$dead))
+			Records[[i]]$dead <- as.Date(Records[[i]]$dead, format_date)
 		Dates[[i]] <- read.xlsx(file, sheetName=i, header=FALSE,
 				stringsAsFactors=FALSE, rowIndex=1, check.names=FALSE)
 	}
@@ -50,7 +56,7 @@ xlsx2list <- function(file, ...) {
 			for(k in with(rec_vars, long_name[!long_name %in%
 									colnames(records_j[[j]])]))
 				records_j[[j]][,k] <- NA
-			records_j[[j]]$record_date <- as.Date(j)
+			records_j[[j]]$record_date <- as.Date(j, format_date)
 			records_j[[j]]$record_id <- NA
 			records_j[[j]] <- records_j[[j]][,c("record_id","individual_no",
 							"record_date", rec_vars$long_name)]
