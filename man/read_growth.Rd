@@ -4,7 +4,7 @@
 \alias{read_growth}
 \title{Read growth data and produce an ODB file}
 \usage{
-read_growth(xlsx, odb = ".temp.odb", ...)
+read_growth(xlsx, odb = ".temp.odb", format_date = "\%d.\%m.\%Y", ...)
 }
 \arguments{
 \item{xlsx}{Character value with the path and/or name of the XLSX input file.}
@@ -12,10 +12,13 @@ read_growth(xlsx, odb = ".temp.odb", ...)
 \item{odb}{Character value indicating the path and/or name of output ODB
 file.}
 
+\item{format_date}{Character value indicating format of date entries (see
+\code{\link[=xlsx2list]{xlsx2list()}}).}
+
 \item{...}{Further arguments (not yet in use).}
 }
 \value{
-A data frame as in \code{\link[=odb2df]{odb2df()}}.
+A data frame and an ODB file as in \code{\link[=odb2df]{odb2df()}}.
 }
 \description{
 Read row data and export to a single data frame using an ODB file as

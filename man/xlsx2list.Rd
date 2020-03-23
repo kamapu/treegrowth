@@ -4,11 +4,14 @@
 \alias{xlsx2list}
 \title{Read xlsx book into a list}
 \usage{
-xlsx2list(file, ...)
+xlsx2list(file, format_date = "\%d.\%m.\%Y", ...)
 }
 \arguments{
 \item{file}{Character value indicating the path and/or the name of the file
 containing the data to be imported.}
+
+\item{format_date}{Character value indicating the format used for date in the
+input table (passed to argument \code{format} in \code{\link[=as.Date]{as.Date()}}).}
 
 \item{...}{Further arguments (not yet used).}
 }
